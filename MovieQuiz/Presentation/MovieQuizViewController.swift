@@ -83,6 +83,9 @@ final class MovieQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        previewImage.layer.cornerRadius = 20
+        previewImage.layer.masksToBounds = true
+        
         indexLabel.font = Fonts.ysDisplayMedium20
         questionTitleLabel.font = Fonts.ysDisplayMedium20
         yesButton.titleLabel?.font = Fonts.ysDisplayMedium20
@@ -140,7 +143,6 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func showAnswerResult(isCorrect: Bool) {
-        previewImage.layer.masksToBounds = true
         previewImage.layer.borderWidth = 8
         previewImage.layer.cornerRadius = 20
         if isCorrect {
@@ -157,6 +159,9 @@ final class MovieQuizViewController: UIViewController {
             self.showNextQuestionOrResults()
             self.yesButton.isEnabled = true
             self.noButton.isEnabled = true
+
+            self.previewImage.layer.borderWidth = 0
+            self.previewImage.layer.borderColor = nil
         }
     }
     
