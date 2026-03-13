@@ -1,10 +1,3 @@
-//
-//  AlertPresenter.swift
-//  MovieQuiz
-//
-//  Created by Matvei on 7.03.26.
-//
-
 import UIKit
 
 final class AlertPresenter {
