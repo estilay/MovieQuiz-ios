@@ -23,11 +23,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         super.viewDidLoad()
         
         setupUI()
-        
-        let questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
-        
-        showLoadingIndicator()
-        questionFactory.loadData()
+        setupQuestionFactory()
+        loadData()
     }
     
     // MARK: - QuestionFactoryDelegate
@@ -49,17 +46,14 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
 
     func didFailToLoadDataFromServer(with error: Error) {
         showNetworkError(message: error.localizedDescription)
-        
     }
     
     // MARK: - Actions
     @IBAction private func noButtonClicked(_ sender: UIButton) {
-        guard let currentQuestion = currentQuestion else { return }
-        showAnswerResult(isCorrect: !currentQuestion.correctAnswer)
+        answer(isYes: false)
     }
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
-        guard let currentQuestion = currentQuestion else { return }
-        showAnswerResult(isCorrect: currentQuestion.correctAnswer)
+        answer(isYes: true)
     }
     
     // MARK: - Private functions
@@ -76,6 +70,24 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         previewImage.layer.masksToBounds = true
         setupFonts()
     }
+    
+    private func setupQuestionFactory() {
+        questionFactory = QuestionFactory(
+            moviesLoader: MoviesLoader(),
+            delegate: self
+        )
+    }
+
+    private func loadData() {
+        showLoadingIndicator()
+        questionFactory?.loadData()
+    }
+    
+    private func answer(isYes: Bool) {
+        guard let currentQuestion = currentQuestion else { return }
+        let isCorrect = isYes ? currentQuestion.correctAnswer : !currentQuestion.correctAnswer
+        showAnswerResult(isCorrect: isCorrect)
+    }
 
     private func show(quiz step: QuizStepViewModel) {
         previewImage.image = step.image
@@ -85,7 +97,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         let questionStep = QuizStepViewModel(
-            image: UIImage(data: model.imageName) ?? UIImage(),
+            image: UIImage(data: model.imageName) ?? (UIImage(named: "placeholder") ?? UIImage()),
             question: model.text,
             questionNumber: "\(currentQuestionIndex + 1)/\(questionsAmount)")
         return questionStep
