@@ -104,17 +104,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="p1R-BQ-Ti2">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
+                            <constraint firstItem="p1R-BQ-Ti2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Jl-Ng-e6U"/>
                             <constraint firstItem="xh1-Cz-7HD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="A6n-U8-rl4"/>
                             <constraint firstItem="xh1-Cz-7HD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="NWu-63-Kto"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xh1-Cz-7HD" secondAttribute="bottom" id="d0Y-Vn-Ehi"/>
+                            <constraint firstItem="p1R-BQ-Ti2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kvK-pd-Rpf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xh1-Cz-7HD" secondAttribute="trailing" constant="20" id="sqN-Ks-I6A"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="p1R-BQ-Ti2" id="DAK-ts-VJg"/>
                         <outlet property="indexLabel" destination="ECZ-I4-r0g" id="s1C-db-WcO"/>
                         <outlet property="noButton" destination="iOV-gM-mxR" id="Bnw-bg-6cB"/>
                         <outlet property="previewImage" destination="Qo4-d1-seC" id="1w5-KJ-BOA"/>
@@ -125,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55.200000000000003" y="55.418719211822662"/>
+            <point key="canvasLocation" x="-55.725190839694655" y="54.929577464788736"/>
         </scene>
     </scenes>
     <resources>
