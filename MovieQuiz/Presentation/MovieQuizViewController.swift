@@ -1,13 +1,13 @@
 import UIKit
 
 final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
-    @IBOutlet private var yesButton: UIButton!
-    @IBOutlet private var noButton: UIButton!
-    @IBOutlet private var questionTitleLabel: UILabel!
-    @IBOutlet private var indexLabel: UILabel!
-    @IBOutlet private var questionLabel: UILabel!
-    @IBOutlet private var previewImage: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var yesButton: UIButton!
+    @IBOutlet private weak var noButton: UIButton!
+    @IBOutlet private weak var questionTitleLabel: UILabel!
+    @IBOutlet private weak var indexLabel: UILabel!
+    @IBOutlet private weak var questionLabel: UILabel!
+    @IBOutlet private weak var previewImage: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Properties
     private var currentQuestionIndex = 0
@@ -22,9 +22,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        previewImage.layer.cornerRadius = 20
-        previewImage.layer.masksToBounds = true
-        setupFonts()
+        setupUI()
         
         let questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
         
@@ -73,6 +71,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         questionLabel.font = Fonts.ysDisplayBold23
     }
     
+    private func setupUI() {
+        previewImage.layer.cornerRadius = 20
+        previewImage.layer.masksToBounds = true
+        setupFonts()
+    }
+
     private func show(quiz step: QuizStepViewModel) {
         previewImage.image = step.image
         questionLabel.text = step.question
@@ -92,7 +96,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             statisticService.store(correct: correctAnswers, total: questionsAmount)
             
             let text = "Ваш результат: \(correctAnswers)/\(questionsAmount)"
-            let viewModel = QuizResultsViewModel( // 2
+            let viewModel = QuizResultsViewModel(
                 title: "Этот раунд окончен!",
                 text: text,
                 buttonText: "Сыграть ещё раз")
