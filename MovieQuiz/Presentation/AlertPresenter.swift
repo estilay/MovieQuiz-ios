@@ -10,7 +10,7 @@ final class AlertPresenter {
         let action = UIAlertAction(title: model.alertButtonText, style: .default) { _ in
             model.completion()
         }
-
+        
         alert.addAction(action)
         vc.present(alert, animated: true, completion: nil)
     }
