@@ -1,6 +1,6 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     @IBOutlet private weak var yesButton: UIButton!
     @IBOutlet private weak var noButton: UIButton!
     @IBOutlet private weak var questionTitleLabel: UILabel!
@@ -42,18 +42,18 @@ final class MovieQuizViewController: UIViewController {
         previewImage.layer.masksToBounds = true
         setupFonts()
     }
-
-    func show(quiz step: QuizStepViewModel) {
-        previewImage.layer.borderColor = nil
-        previewImage.image = UIImage(data: step.image) ?? UIImage()
-        questionLabel.text = step.question
-        indexLabel.text = step.questionNumber
-    }
     
     func highlightImageBorder(isCorrectAnswer: Bool) {
         previewImage.layer.masksToBounds = true
         previewImage.layer.borderWidth = 8
         previewImage.layer.borderColor = isCorrectAnswer ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
+    }
+
+    func showQuestion(quiz step: QuizStepViewModel) {
+        previewImage.layer.borderColor = nil
+        previewImage.image = UIImage(data: step.image) ?? UIImage()
+        questionLabel.text = step.question
+        indexLabel.text = step.questionNumber
     }
     
     func showResults(quiz result: QuizResultsViewModel) {
