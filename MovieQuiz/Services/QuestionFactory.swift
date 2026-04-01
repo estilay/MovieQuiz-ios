@@ -35,7 +35,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
             let text = "Рейтинг этого фильма больше чем 8.3?"
             let correctAnswer = rating > 8.3
             
-            let question = QuizQuestion(imageName: imageData,
+            let question = QuizQuestion(image: imageData,
                                          text: text,
                                          correctAnswer: correctAnswer)
             
