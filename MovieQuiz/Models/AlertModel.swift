@@ -1,9 +1,9 @@
 import Foundation
 
 struct AlertModel {
-    var alertTitle: String
-    var alertMessage: String
-    var alertButtonText: String
+    var title: String
+    var message: String
+    var buttonText: String
     
     var completion: () -> Void
 }

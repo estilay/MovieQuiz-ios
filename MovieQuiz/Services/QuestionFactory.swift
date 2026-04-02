@@ -4,6 +4,8 @@ final class QuestionFactory: QuestionFactoryProtocol {
     private let moviesLoader: MoviesLoading
     weak var delegate: QuestionFactoryDelegate?
     
+    private var movies: [MostPopularMovie] = []
+    
     init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate?) {
         self.moviesLoader = moviesLoader
         self.delegate = delegate
@@ -33,7 +35,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
             let text = "Рейтинг этого фильма больше чем 8.3?"
             let correctAnswer = rating > 8.3
             
-            let question = QuizQuestion(imageName: imageData,
+            let question = QuizQuestion(image: imageData,
                                          text: text,
                                          correctAnswer: correctAnswer)
             
@@ -43,8 +45,6 @@ final class QuestionFactory: QuestionFactoryProtocol {
             }
         }
     }
-    
-    private var movies: [MostPopularMovie] = []
     
     func loadData() {
         moviesLoader.loadMovies { [weak self] result in
