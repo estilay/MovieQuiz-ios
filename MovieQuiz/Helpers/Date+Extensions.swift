@@ -7,7 +7,7 @@ extension Date {
 private extension DateFormatter {
     static let defaultDateTime: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY HH:mm" // заменил на 24 часовой формат
+        dateFormatter.dateFormat = "dd.MM.YY HH:mm" // 24h format
         return dateFormatter
     }()
 }

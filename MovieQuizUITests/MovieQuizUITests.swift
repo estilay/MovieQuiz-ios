@@ -1,10 +1,3 @@
-//
-//  MovieQuizUITests.swift
-//  MovieQuizUITests
-//
-//  Created by Matvei on 28.03.26.
-//
-
 import XCTest
 
 final class MovieQuizUITests: XCTestCase {
@@ -28,38 +21,39 @@ final class MovieQuizUITests: XCTestCase {
     }
  
     func testYesButton() {
+        // Given
         sleep(3)
         let firstPoster = app.images["Poster"]
         let firstPosterData = firstPoster.screenshot().pngRepresentation
         
+        // When
         app.buttons["Yes"].tap()
-
         sleep(3)
-
 
         let secondPoster = app.images["Poster"]
         let secondPosterData = secondPoster.screenshot().pngRepresentation
-        
         let indexLabel = app.staticTexts["Index"]
 
+        // Then
         XCTAssertNotEqual(firstPosterData, secondPosterData)
         XCTAssertEqual(indexLabel.label, "2/10")
     }
     
     func testNoButton() {
+        // Given
         sleep(3)
-        
         let firstPoster = app.images["Poster"]
         let firstPosterData = firstPoster.screenshot().pngRepresentation
         
+        // When
         app.buttons["No"].tap()
         sleep(3)
         
         let secondPoster = app.images["Poster"]
         let secondPosterData = secondPoster.screenshot().pngRepresentation
-
         let indexLabel = app.staticTexts["Index"]
        
+        // Then
         XCTAssertNotEqual(firstPosterData, secondPosterData)
         XCTAssertEqual(indexLabel.label, "2/10")
     }
