@@ -17,15 +17,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Switcher: true = Mock Data, false = Real Data
-        let useMockData = true  // <- Change here
-        
-        if useMockData {
-            let mockFactory = MockQuestionFactory()
-            presenter = MovieQuizPresenter(viewController: self, questionFactory: mockFactory)
-        } else {
-            presenter = MovieQuizPresenter(viewController: self)
-        }
+        presenter = MovieQuizPresenter(viewController: self)
         
         alertPresenter = AlertPresenter()
         setupUI()

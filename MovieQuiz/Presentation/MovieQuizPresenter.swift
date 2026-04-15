@@ -18,8 +18,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         
         if let factoryWithDelegate = questionFactory as? QuestionFactory {
             factoryWithDelegate.delegate = self
-        } else if let mockFactory = questionFactory as? MockQuestionFactory {
-            mockFactory.delegate = self
         }
         
         self.questionFactory.loadData()
@@ -32,7 +30,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     }
 
     // MARK: - QuestionFactoryDelegate
-    
     func didLoadDataFromServer() {
         viewController?.hideLoadingIndicator()
         questionFactory.requestNextQuestion()

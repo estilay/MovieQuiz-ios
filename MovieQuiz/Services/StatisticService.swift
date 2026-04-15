@@ -2,12 +2,12 @@ import Foundation
 
 final class StatisticService {
     private enum Keys: String {
-        case gamesCount          // Для счётчика сыгранных игр
-        case bestGameCorrect     // Для количества правильных ответов в лучшей игре
-        case bestGameTotal       // Для общего количества вопросов в лучшей игре
-        case bestGameDate        // Для даты лучшей игры
-        case totalCorrectAnswers // Для общего количества правильных ответов за все игры
-        case totalQuestionsAsked // Для общего количества вопросов, заданных за все игры
+        case gamesCount
+        case bestGameCorrect
+        case bestGameTotal
+        case bestGameDate
+        case totalCorrectAnswers
+        case totalQuestionsAsked
     }
     
     private let storage: UserDefaults = .standard
